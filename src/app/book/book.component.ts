@@ -24,7 +24,7 @@ export class BookComponent implements OnInit {
   }
   searchBook() {
     this.bookId.valueChanges.pipe(
-      debounceTime(1000),
+      debounceTime(10000),
       switchMap(id => {
         console.log(id);
         return this.bookService.getBook(id);
