@@ -1,0 +1,19 @@
+{
+    "books": [
+        {
+            "id": 101,
+            "name": "Book 1",
+            "category": "cat123"
+        },
+        {
+            "id": 102,
+            "name": "Book 2",
+            "category": "cat123"
+        },
+        {
+            "id": 103,
+            "name": "Book 2",
+            "category": "cat321"
+        }
+    ]
+}

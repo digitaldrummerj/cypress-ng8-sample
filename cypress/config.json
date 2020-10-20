@@ -1,0 +1,6 @@
+{
+    "reporterEnabled": "spec,mocha-teamcity-reporter",
+    "reporterOptions": {
+        "mochaFile": "cypress/results/results-[hash].xml"
+    }
+}
