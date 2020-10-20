@@ -34,7 +34,7 @@ describe('single test', () => {
 
     });
 
-    it.only('search book 103', () => {
+    it('search book 103', () => {
       cy.server();
       cy.route("http://localhost:3000/books/*", {
         "id": 103,
