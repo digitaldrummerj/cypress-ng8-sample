@@ -5,12 +5,13 @@ describe('single test', () => {
     before(() => {
     });
     beforeEach(() => {
+      cy.clock();
       cy.visit('/');
       cy.location('pathname').should('eq', '/');
       cy.get('[data-cy="search"]').clear();
     });
 
-    it('search book 101', () => {
+    it.skip('search book 101', () => {
       cy.server();
       cy.route("http://localhost:3000/books/*", {
         "id": 101,

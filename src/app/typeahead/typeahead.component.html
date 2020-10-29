@@ -1,0 +1,88 @@
+<form role="form" [formGroup]="bookFormGroup" data-cy="books">
+    <div class="row">
+        <div class="col-sm-10 form-right-side col-sm-offset-1">
+            <h2 class="mat-headline">Search</h2>
+            <div class="form-group full-width">
+                <mat-form-field>
+                    <input type="text" placeholder="Search by book title" aria-label="Book Title Search"
+                        matInput [formControl]="searchBook" [matAutocomplete]="autoBook" formControlName="searchBook"
+                        [maxlength]="255" data-cy="searchBook">
+                    <button *ngIf="searchBook?.value  && !isLoadingBooks" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="resetBook()" type="button" data-cy="btnResetBook">
+                        <fa-icon [icon]="['fas', 'times']" [fixedWidth]="true" class="text-light-gray"></fa-icon>
+                    </button>
+                    <button *ngIf="searchBook?.value && isLoadingBooks" matSuffix mat-icon-button type="button">
+                        <fa-icon [icon]="['fas', 'spinner']" [fixedWidth]="true" [pulse]="true" class="text-gray">
+                        </fa-icon>
+                    </button>
+                    <mat-hint>
+                        <span *ngIf="searchBook?.value && searchBookResults?.length === 0 && !isLoadingBooks"
+                            class="text-danger">No books were found for your search</span>
+                    </mat-hint>
+                    <mat-autocomplete #autoBook="matAutocomplete" autoActiveFirstOption
+                        [displayWith]="displayBook" (optionSelected)="selectBook($event)">
+                        <mat-option *ngFor="let item of searchBookResults" [value]="item">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+            </div>
+        </div>
+    </div>
+</form>
+<div class="form-group">
+    <h2>Results</h2>
+    <mat-list *ngIf="listBooks.length > 0">
+        <mat-list-item *ngFor="let item of listBooks" data-cy="listBooks">
+
+            {{item.value}}
+        </mat-list-item>
+    </mat-list>
+</div>
+
+
+<form role="form" [formGroup]="bookFormGroup2" data-cy="books">
+    <div class="row">
+        <div class="col-sm-10 form-right-side col-sm-offset-1">
+            <h2 class="mat-headline">Search with Debounce</h2>
+            <div class="form-group full-width">
+                <mat-form-field>
+                    <input type="text" placeholder="Search by book title" aria-label="Book Title Search" matInput
+                        [formControl]="searchBook2" [matAutocomplete]="autoBook2" formControlName="searchBook2"
+                        [maxlength]="255" data-cy="searchBook2">
+                    <button *ngIf="searchBook2?.value  && !isLoadingBooks2" matSuffix mat-icon-button aria-label="Clear"
+                        (click)="resetBook2()" type="button" data-cy="btnResetBook2">
+                        <fa-icon [icon]="['fas', 'times']" [fixedWidth]="true" class="text-light-gray"></fa-icon>
+                    </button>
+                    <button *ngIf="searchBook2?.value && isLoadingBooks2" matSuffix mat-icon-button type="button">
+                        <fa-icon [icon]="['fas', 'spinner']" [fixedWidth]="true" [pulse]="true" class="text-gray">
+                        </fa-icon>
+                    </button>
+                    <mat-hint>
+                        <span *ngIf="searchBook2?.value && searchBookResults2?.length === 0 && !isLoadingBooks2"
+                            class="text-danger">No books were found for your search</span>
+                            <span *ngIf="searchBook2?.value && searchBookResults2?.length > 0 && !isLoadingBooks2"
+                                class="text-danger">{{searchBookResults2.length }} books </span>
+                    </mat-hint>
+                    <mat-autocomplete #autoBook2="matAutocomplete" autoActiveFirstOption [displayWith]="displayBook2"
+                        (optionSelected)="selectBook2($event)">
+                        <mat-option *ngFor="let item of searchBookResults2" [value]="item">
+                            {{ item.name }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </mat-form-field>
+
+            </div>
+        </div>
+    </div>
+</form>
+<div class="form-group">
+    <h2>Results</h2>
+    <mat-list *ngIf="listBooks2.length > 0">
+        <mat-list-item *ngFor="let item of listBooks2" data-cy="listBooks2">
+
+            {{item.value}}
+        </mat-list-item>
+    </mat-list>
+</div>
