@@ -150,7 +150,6 @@ export class TypeaheadComponent implements OnInit {
   }
 
   selectBook2($event) {
-2
     const app = $event.option.value;
 
     const addApp: KeyValue<string, string> = { key: app.id, value: app.name };
