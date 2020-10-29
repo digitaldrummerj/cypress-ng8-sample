@@ -5,7 +5,7 @@ describe('Typeahead Tests', () => {
     beforeEach(() => {
 
     });
-    it.only('Angular Material without Debounce', () => {
+    it('Angular Material without Debounce', () => {
         cy.server();
         cy.route("http://localhost:3000/books/", [
             {
@@ -24,13 +24,13 @@ describe('Typeahead Tests', () => {
         cy.wait('@books').then(text => {
             cy.log(text);
 
-            cy.get('mat-option:eq(0)').should('be.visible').click();
+            cy.get('mat-option').should('be.visible').click();
             cy.get('[data-cy="listBooks"]').should('be.visible').and('have.length', 1);
 
         });
     });
 
-    it.only('Angular Material with Debounce', () => {
+    it('Angular Material with Debounce', () => {
         cy.server();
         cy.route("http://localhost:3000/books/", [
             {
@@ -40,7 +40,7 @@ describe('Typeahead Tests', () => {
             }
         ]).as('books');
 
-        cy.clock()
+        cy.clock(Date.now, ['Date'])
         cy.visit('/typeahead');
         cy.location('pathname').should('eq', '/typeahead');
         // cy.get('[data-cy="searchApplication"]').clear();
@@ -48,7 +48,7 @@ describe('Typeahead Tests', () => {
             .type('102')
             .tick(3000)
             .wait('@books').then(text => {
-                cy.get('mat-option:eq(0)').should('be.visible').click();
+                cy.get('mat-option').should('be.visible').click();
                 cy.get('[data-cy="listBooks2"]').should('be.visible').and('have.length', 1);
 
             });
