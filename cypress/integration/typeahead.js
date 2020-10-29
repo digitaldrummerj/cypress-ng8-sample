@@ -40,7 +40,7 @@ describe('Typeahead Tests', () => {
             }
         ]).as('books');
 
-        cy.clock()
+        cy.clock(Date.now, ['Date'])
         cy.visit('/typeahead');
         cy.location('pathname').should('eq', '/typeahead');
         // cy.get('[data-cy="searchApplication"]').clear();
