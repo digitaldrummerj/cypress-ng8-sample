@@ -20,6 +20,6 @@ jobs:
           parallel: true
           start-windows: npm run ci
         env:
-          CYPRESS_RECORD_KEY: ${{ secrets,CYPRESS_RECORD_KEY }}
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
           # pass GitHub token to allow accurately detecting a build vs a re-run build
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
