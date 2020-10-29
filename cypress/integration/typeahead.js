@@ -24,7 +24,7 @@ describe('Typeahead Tests', () => {
         cy.wait('@books').then(text => {
             cy.log(text);
 
-            cy.get('mat-option:eq(0)').should('be.visible').click();
+            cy.get('mat-option').should('be.visible').click();
             cy.get('[data-cy="listBooks"]').should('be.visible').and('have.length', 1);
 
         });
@@ -48,7 +48,7 @@ describe('Typeahead Tests', () => {
             .type('102')
             .tick(3000)
             .wait('@books').then(text => {
-                cy.get('mat-option:eq(0)').should('be.visible').click();
+                cy.get('mat-option').should('be.visible').click();
                 cy.get('[data-cy="listBooks2"]').should('be.visible').and('have.length', 1);
 
             });
