@@ -3,10 +3,10 @@ on: [push]
 jobs:
   cypress-run:
     runs-on: windows-2016
-    container:
-    strategy:
-        matrix:
-          machines: [1,2,3]
+    # container:
+    # strategy:
+    #     matrix:
+    #       machines: [1,2,3]
     steps:
       - name: Checkout
         uses: actions/checkout@v1
