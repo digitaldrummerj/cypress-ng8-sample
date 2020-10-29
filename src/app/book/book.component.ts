@@ -12,14 +12,19 @@ import { FormControl, FormBuilder, FormGroup } from '@angular/forms';
 })
 export class BookComponent implements OnInit {
 
-  constructor(private bookService: BookService, private formBuilder: FormBuilder) { }
+  searchApp: FormControl = new FormControl();
   book: Book;
   bookId = new FormControl();
+
+  constructor(private bookService: BookService, private formBuilder: FormBuilder) { }
   bookForm: FormGroup = this.formBuilder.group({
-    bookId: this.bookId
+    bookId: this.bookId,
+    searchApp: this.searchApp,
   });
 
   ngOnInit() {
+    this.searchApp = new FormControl('');
+
     this.searchBook();
   }
   searchBook() {
