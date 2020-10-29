@@ -5,7 +5,7 @@ describe('Typeahead Tests', () => {
     beforeEach(() => {
 
     });
-    it.only('Angular Material without Debounce', () => {
+    it('Angular Material without Debounce', () => {
         cy.server();
         cy.route("http://localhost:3000/books/", [
             {
@@ -30,7 +30,7 @@ describe('Typeahead Tests', () => {
         });
     });
 
-    it.only('Angular Material with Debounce', () => {
+    it('Angular Material with Debounce', () => {
         cy.server();
         cy.route("http://localhost:3000/books/", [
             {
